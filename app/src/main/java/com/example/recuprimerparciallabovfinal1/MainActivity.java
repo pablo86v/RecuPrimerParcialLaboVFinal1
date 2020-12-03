@@ -1,6 +1,7 @@
 package com.example.recuprimerparciallabovfinal1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,16 +25,16 @@ public class MainActivity extends AppCompatActivity implements  Handler.Callback
         setContentView(R.layout.activity_main);
 
 
+        /*this.listaAutos.add(new AutoModel(1,"BMW", "7 Series", 2000));
         this.listaAutos.add(new AutoModel(1,"BMW", "7 Series", 2000));
-        this.listaAutos.add(new AutoModel(1,"BMW", "7 Series", 2000));
-        this.listaAutos.add(new AutoModel(1,"BMW", "7 Series", 2000));
+        this.listaAutos.add(new AutoModel(1,"BMW", "7 Series", 2000));*/
 
 
         setRecyclerView();
 
-        /*h = new Handler(this);
+        h = new Handler(this);
         HttpThread httpThread = new HttpThread(h, getString(R.string.api_url));
-        httpThread.start();*/
+        httpThread.start();
     }
 
     private void updateList(int position, AutoModel auto){
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements  Handler.Callback
      */
     private void setRecyclerView(){
         RecyclerView rv = (RecyclerView)findViewById(R.id.recycler);
-        LinearLayoutManager lm = new LinearLayoutManager(this);
+        GridLayoutManager lm = new GridLayoutManager(this, 2);
         rv.setLayoutManager(lm);
 
         autoAdapter = new AutoAdapter(this.listaAutos, this);
@@ -69,10 +70,10 @@ public class MainActivity extends AppCompatActivity implements  Handler.Callback
 
     @Override
     public boolean handleMessage(@NonNull Message message) {
-    /*    List<AutoModel> lista = (List<AutoModel>) message.obj;
+        List<AutoModel> lista = (List<AutoModel>) message.obj;
         for (AutoModel item: lista) {
             listaAutos.add(item);
-        }*/
+        }
         this.autoAdapter.notifyDataSetChanged();
         return true;
     }
