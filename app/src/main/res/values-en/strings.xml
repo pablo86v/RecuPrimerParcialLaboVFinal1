@@ -4,6 +4,7 @@
     <string name="detail_title">Edit car</string>
     <string name="marca">Car\'s make</string>
     <string name="modelo">Car\'s model</string>
+    <string name="año">Year:</string>
     <string name="btnEditar">Edit</string>
     <string name="api_url">http://192.168.1.41:3000/autos</string>
 </resources>
